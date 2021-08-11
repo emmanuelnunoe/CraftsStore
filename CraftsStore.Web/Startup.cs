@@ -1,7 +1,11 @@
+using CraftsStore.Web.Data;
 using CraftsStore.Web.Services;
+using CraftsStore.Web.Services.Implementations;
+using CraftsStore.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,9 +29,13 @@ namespace CraftsStore.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddDbContext<ApplicationContext>(c => c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            
             //services.AddSingleton<JsonFileProductService>(); // se recomienda para leer clases con valores fijos.
             //services.AddScoped<JsonFileProductService>(); // crea una instancia de este objeto se solicite y regresalo
-            services.AddTransient<JsonFileProductService>(); // crea una instancia para cada vez que sea solicitado. se mantiene vivo, mientra se construye la peticion.
+            services.AddTransient<IProductService,DbProductService>(); // crea una instancia para cada vez que sea solicitado. se mantiene vivo, mientra se construye la peticion.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

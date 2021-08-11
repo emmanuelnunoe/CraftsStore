@@ -4,7 +4,13 @@
     ViewData["Title"] = "Home page";
 }
 
-// crear una pagina que reciba el makery traiga todos los productos en una tabla <table></table>
+@if (@Model == null)
+{
+    <div>Esta pagina esta vacia :/</div>
+}
+else
+{
+
 
 <div class="text-center">
     <h1 class="display-4">Hola clase</h1>
@@ -20,7 +26,7 @@
 </div>
 
 <section class="card-columns">
-    @foreach (var product in Model.Products)
+    @foreach (var product in @Model.Products)
     {
         var bgColor = product.Maker == "jenlooper" ? "bg-info" : "";
 
@@ -41,5 +47,5 @@
     }
 
 </section>
-
+}
 <!--Comentarios como en html aqui-->

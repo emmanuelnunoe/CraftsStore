@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CraftsStore.Web.Models;
 using CraftsStore.Web.Services;
+using CraftsStore.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -13,11 +14,11 @@ namespace CraftsStore.Web.Pages
     {
         [BindProperty(SupportsGet = true)]
         public string Maker { get; set; }
-        private readonly JsonFileProductService _productService;
+        private readonly IProductService _productService;
         public List<Product> MakerProducts { get; private set; }
 
 
-        public MakerOptionalModel(JsonFileProductService jsonFileProductService)
+        public MakerOptionalModel(IProductService jsonFileProductService)
         {
             _productService = jsonFileProductService;
         }

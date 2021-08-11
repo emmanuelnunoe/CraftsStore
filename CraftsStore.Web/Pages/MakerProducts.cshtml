@@ -1,7 +1,8 @@
 ﻿@page "/maker/{id}"
 @model CraftsStore.Web.Pages.MakerProductsModel
 
-
+@if(Model.MakerProducts)
+{ 
 <h3>@Model.Id</h3>
 <table class="table">
     <thead>
@@ -23,7 +24,6 @@
             <th scope="row">@makerproduct.Id</th>
             <td>@makerproduct.Title</td>
             <td><img src="@makerproduct.Image" class="card-img-top" /></td>
-            <td>@makerproduct.Rating</td>
             <td><a href="@makerproduct.Url" target="_blank">Link</a></td>
             <td>@makerproduct.Description</td>
         </tr>
@@ -31,4 +31,8 @@
 
     </tbody>
 </table>
-
+}
+            else
+            {
+                <div>No Products to show</div>
+            }

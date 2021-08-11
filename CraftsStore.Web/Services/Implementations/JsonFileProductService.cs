@@ -6,11 +6,12 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using CraftsStore.Web.Models;
 using CraftsStore.Web.Services;
+using CraftsStore.Web.Services.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CraftsStore.Web.Services
+namespace CraftsStore.Web.Services.Implementations
 {
-    public class JsonFileProductService
+    public class JsonFileProductService : IProductService
     {
         public readonly IWebHostEnvironment _WebHostEnvironment;
 

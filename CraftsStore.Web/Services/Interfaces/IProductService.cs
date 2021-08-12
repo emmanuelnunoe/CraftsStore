@@ -9,9 +9,11 @@ namespace CraftsStore.Web.Services.Interfaces
 {
     public interface IProductService
     {
-        public List<Product> MakerProducts(string maker);
+        public Task <IEnumerable<Product>>GetMakerProductsAsync(string maker);
 
-        public Product[] GetProducts();
-         public Product GetProduct(string Id);
+        public Task<IEnumerable<Product>> GetProductsAsync();
+        public Task <Product> GetProductAsync(string Id);
+
+       
     }
 }

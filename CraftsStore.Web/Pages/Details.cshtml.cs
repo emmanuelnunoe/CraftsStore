@@ -15,10 +15,10 @@ namespace CraftsStore.Web.Pages
     {
         [BindProperty(SupportsGet = true)]
         public string Id { get; set; }
-        public Product Product{ get; set; }
-        private readonly IProductService _productService;
+        public Task<Product> Product{ get; set; }
+        private readonly IDbProductService _productService;
 
-        public DetailsModel(IProductService jsonFileProductService)
+        public DetailsModel(IDbProductService jsonFileProductService)
         {
             _productService = jsonFileProductService;
         }
@@ -30,9 +30,14 @@ namespace CraftsStore.Web.Pages
             // Utilizar el id para obtener el producto del servicio de jsonfileProductService
             // y mostrar todas sus propiedades en la pagina en la pagina hmtl de razor
 
-            Product = _productService.GetProduct(Id);
+            Product = _productService.GetProductAsync(Id);
             
 
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            await _productService.DeleteProductAsync(Id);
+            return RedirectToPage("/Index");
         }
 
     }

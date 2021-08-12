@@ -8,16 +8,19 @@ namespace CraftsStore.Web.Models
     {
         public string Id { get; set; }
 
-        [MaxLength(200)]
+        [StringLength(40,MinimumLength=3)]
         [Required]
         public string Maker { get; set; }
         [JsonPropertyName("img")]
         public string Image { get; set; }
-
-      
-        public string Url { get; set; }
-        [MaxLength(200)]
+        [MaxLength(100)]
         [Required]
+        [Url]
+        [Display(Name ="Site URL")]
+        public string Url { get; set; }
+        [MaxLength(100)]
+        [Required]
+        [StringLength(100,MinimumLength =3)]
         public string Title { get; set; }
 
         [MaxLength(100)]
@@ -26,10 +29,8 @@ namespace CraftsStore.Web.Models
         //public int[] Rating { get; set; }
 
 
-        public override string ToString()
-        {
-            return JsonSerializer.Serialize(this);
-        }
+        public override string ToString()=> JsonSerializer.Serialize(this);
+        
 
     }
 }

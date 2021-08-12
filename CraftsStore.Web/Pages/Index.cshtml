@@ -2,14 +2,9 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    var makers = Model.Products.Select(c => c.Maker).Distinct();
 }
 
-@if (@Model == null)
-{
-    <div>Esta pagina esta vacia :/</div>
-}
-else
-{
 
 
 <div class="text-center">
@@ -18,13 +13,19 @@ else
 </div>
 
 <div class="mb-3">
-
-    @foreach (var maker in Model.Products.Select(c => c.Maker).Distinct())
+    @if(makers.Any())
     {
-    <a href="~/maker/@maker" class="mr-3">@maker</a>
+        @foreach (var maker in Model.Products.Select(c => c.Maker).Distinct())
+        {
+        <a href="~/maker/@maker" class="mr-3">@maker</a>
+        }
     }
 </div>
-
+<nav>
+    <a href="~/newProduct" class="btn btn-primary">>Add Product</a>
+</nav>
+@if(Model.Products.Any())
+{ 
 <section class="card-columns">
     @foreach (var product in @Model.Products)
     {
@@ -48,4 +49,9 @@ else
 
 </section>
 }
+            else
+            {
+                <p class="lead text-center" >There's is no product to show'</p>
+            }
+
 <!--Comentarios como en html aqui-->

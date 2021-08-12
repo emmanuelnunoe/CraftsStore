@@ -1,7 +1,7 @@
 ﻿@page "/maker/{id}"
 @model CraftsStore.Web.Pages.MakerProductsModel
 
-@if(Model.MakerProducts)
+@if(Model.MakerProducts.Any())
 { 
 <h3>@Model.Id</h3>
 <table class="table">
@@ -34,5 +34,5 @@
 }
             else
             {
-                <div>No Products to show</div>
+                <div class="lead text-center">There's no Products to show</div>
             }

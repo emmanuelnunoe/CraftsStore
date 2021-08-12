@@ -1,0 +1,58 @@
+﻿@page
+@model CraftsStore.Web.Pages.NewProductModel
+@{
+}
+
+
+<form method="post">
+    <div  asp-validation-summary="ModelOnly"class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Product.Id"></label>
+        <input class="form-control" asp-for="Product.Id" />
+        <span asp-validation-for="Product.Id " class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Maker"></label>
+        <input class="form-control" asp-for="Product.Maker" />
+        <span asp-validation-for="Product.Maker" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Image"></label>
+        <input class="form-control" asp-for="Product.Image" />
+        <span asp-validation-for="Product.Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-check">
+        <input asp-for="Product.Url" type="radio" value="http://google.com" class="form-check-input" id="ProductUrl1"/>
+        <label for="ProductUrl1">http://google.com</label>
+    </div>   
+
+    <div class="form-check">
+        <input asp-for="Product.Url" type="radio" value="http://yahoo.com" class="form-check-input" id="ProductUrl2"/>
+        <label for="ProductUrl2">http://yahoo.com</label>
+    </div>   
+    
+    <div class="form-check">
+        <input asp-for="Product.Url" type="radio" value="http://msn.com" class="form-check-input" id="ProductUrl3"/>
+        <label for="ProductUrl3">http://msn.com</label>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="Product.Title"></label>
+        <input class="form-control" asp-for="Product.Title" />
+        <span asp-validation-for="Product.Title"></span>
+    </div>
+
+
+
+    <div class="form-group">
+        <label asp-for="Product.Description"></label>
+        <input class="form-control" asp-for="Product.Description" />
+        <span asp-validation-for="Product.Description"></span>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Save</button>
+</form>

@@ -36,6 +36,7 @@ namespace CraftsStore.Web
             //services.AddSingleton<JsonFileProductService>(); // se recomienda para leer clases con valores fijos.
             //services.AddScoped<JsonFileProductService>(); // crea una instancia de este objeto se solicite y regresalo
             services.AddTransient<IProductService,DbProductService>(); // crea una instancia para cada vez que sea solicitado. se mantiene vivo, mientra se construye la peticion.
+            services.AddTransient<IDbProductService ,DbProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

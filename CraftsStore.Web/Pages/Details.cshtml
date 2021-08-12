@@ -10,14 +10,14 @@
     <div class="card-body">
         <h3 class="card-title">
 
-            @Model.Product.Title
+            @Model.Product.Result.Id
         </h3>
-        <div>Maker: @Model.Product.Maker</div>
+        <div>Maker: @Model.Product.Result.Maker</div>
         <div class="mt-3">
-            <img src="@Model.Product.Image" class="card-img-top" alt="...">
+            <img src="@Model.Product.Result.Image" class="card-img-top" alt="...">
 
-            <div>@Model.Product.Description</div>
-            <div>@Model.Product.Url</div>
+            <div>@Model.Product.Result.Description</div>
+            <div>@Model.Product.Result.Url</div>
         </div>
     </div>
 </div>

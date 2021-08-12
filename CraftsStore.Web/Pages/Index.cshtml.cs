@@ -15,8 +15,8 @@ namespace CraftsStore.Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IProductService _productService;
-        public IEnumerable<Product> Products { get; private set; }
 
+        public IEnumerable<Product> Products { get; private set; }
 
         public IndexModel(ILogger<IndexModel> logger, IProductService jsonFileProductService)
         {
@@ -24,11 +24,11 @@ namespace CraftsStore.Web.Pages
             _productService = jsonFileProductService;
         }
 
-      
+       
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Products = _productService.GetProducts();
+            Products = await _productService.GetProductsAsync();
         }
     }
 }

@@ -13,22 +13,24 @@ namespace CraftsStore.Web.Pages
 {
     public class MakerProductsModel : PageModel
     {
-        [BindProperty(SupportsGet = true)]
-        public string Id { get; set; }
+       
+      
         private readonly IProductService _productService;
-        public List<Product> MakerProducts { get; private set; }
-
-
+    
         public MakerProductsModel(IProductService jsonFileProductService)
         {
             _productService = jsonFileProductService;
         }
 
-        public void OnGet()
+         [BindProperty(SupportsGet = true)]
+         public string Name { get; set; }
+   
+        public IEnumerable<Product> MakerProducts { get; private set; }
+        public async Task OnGetAsync()
         {
             // otra manera de enlazar parametro de url con la propiedad
             // Maker = Request.Query["maker"];
-           MakerProducts = _productService.MakerProducts(Id);
+           MakerProducts = await _productService.GetMakerProductsAsync(Name);
         }
     }
 }
